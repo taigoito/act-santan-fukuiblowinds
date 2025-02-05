@@ -8,7 +8,92 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style-1.0.css">
+    <link rel="stylesheet" href="./style-1.0.1.css">
+    <!-- deli-cart -->
+    <style type="text/css">
+      #open {
+       position: fixed;
+       text-align: center;
+       top: 0.5rem;
+       right: 5%;
+       z-index: 99;
+       width: 3rem;
+       height: 3rem;
+       padding: 0.5rem;
+       border-radius: 50%;
+       background-color: #fff;
+      }
+    </style>
+    <script type="text/javascript" src="//www.deli-cart.jp/public/external/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="//www.deli-cart.jp/public/external/js/jquery.insertVariations.js"></script>
+    <script type="text/javascript" src="//www.deli-cart.jp/public/thirdparty/js/jquery.input-stepper.js"></script>
+    <script type="text/javascript" src="//www.deli-cart.jp/public/external/jquery.externalObentoCart.js"></script>
+    <script type="text/javascript" src="//www.deli-cart.jp/public/external/checkUserAgent.js"></script>
+    <script type="text/javascript">
+      var $j203 = $.noConflict(true);
+      (function($) {
+        $(function(){
+          var ua = window.navigator.userAgent;
+          if (checkUserAgent(ua)) {
+            $('#open').show();
+    
+    
+            var cuser = 'C0001304';//店舗ID
+            var cart = $('#open').externalObentoCart({host:'https://www.deli-cart.jp' ,color: '#EA7100', cuser: cuser,buttonhtml: '<div><span style="background-color: #EA7100;background-image: url(\'//act-santan.jp/contents/img/08_btn-cart-cash.png\');"></span></div>'});
+            //↑background-image　のスタイル部分はレジに入れるボタンをサイトデザインに合わせたものに変更可能
+    
+    
+            $('#open').on('click', function() {
+              cart.toggle();
+            });
+            $('.add').click(function (event) {
+              var click_index = $('.add').index(this);
+              var item_id = $('.item_detail_info #item_detail_item_id').eq(click_index).val();
+              var item_num = $('.item_detail_info .item_detail_number input').eq(click_index).val();
+              var parent = $(this).parents('.item_detail_info');
+    
+    
+              var variation_select = parent.find('.variations').children('.variation');
+              var variation = '';
+              variation_select.each(function(i, element) {
+                if (i != 0) {
+                  variation += '/';
+                }
+                variation += $(element).val();
+              });
+    
+    
+              cart.addItem(item_id, variation, item_num).show();
+            });
+          } else {
+            $('.add').click(function (event) {
+              var click_index = $('.add').index(this);
+              var item_id = $('.item_detail_info #item_detail_item_id').eq(click_index).val();
+              var item_num = $('.item_detail_info .item_detail_number input').eq(click_index).val();
+              var url = '//www.deli-cart.jp/api/cart/add?item=' + item_id + '&num=' + item_num;
+              var parent = $(this).parents('.item_detail_info');
+    
+    
+              var variation_select = parent.find('.variations').children('.variation');
+              var variation = '';
+              variation_select.each(function(i, element) {
+                if (i != 0) {
+                  variation += '/';
+                }
+                variation += $(element).val();
+              });
+    
+    
+              if (variation) {
+                url += '&variation=' + variation;
+              }
+              location.href = url;
+            });
+          }
+        });
+      })($j203);
+    </script>
+    <!-- /deli-cart -->
   </head>
   <body>
     <div class="container">
@@ -41,7 +126,19 @@
               <span class="main__contentHeadSmall">豚カツが入った</span>
               <span class="main__contentHeadlarge">勝つ弁当</span>
             </h2>
-            <a class="main__button" href="#">ご注文は<br>こちらから</a>
+            <!-- add to cart -->
+            <div class="main__add item_detail_info">
+              <input type="hidden" value="xxxx" id="item_detail_item_id">
+               <p class="item_detail_number">
+                 数量: <input class="item-num" size="3" type="type" min="1">
+                 <button data-input-stepper-decrease>-</button>
+                 <button data-input-stepper-increase>+</button>
+              </p>
+              <div class="info_group" id="item_detail_cart">
+                <a class="main__button add" href="javascript:void(0)" >ご注文は<br>こちらから</a>
+              </div>
+             </div>
+            <!-- //add to cart -->
           </div>
         </div>
         <div class="main__content">
@@ -55,7 +152,19 @@
                 <br>ほしいと願いを込めた</span>
               <span class="main__contentHeadlarge">サケのり弁当</span>
             </h2>
-            <a class="main__button" href="#">ご注文は<br>こちらから</a>
+            <!-- add to cart -->
+            <div class="main__add item_detail_info">
+              <input type="hidden" value="xxxx" id="item_detail_item_id">
+               <p class="item_detail_number">
+                 数量: <input class="item-num" size="3" type="type" min="1">
+                 <button data-input-stepper-decrease>-</button>
+                 <button data-input-stepper-increase>+</button>
+              </p>
+              <div class="info_group" id="item_detail_cart">
+                <a class="main__button add" href="javascript:void(0)" >ご注文は<br>こちらから</a>
+              </div>
+             </div>
+            <!-- //add to cart -->
           </div>
         </div>
         <div class="main__content">
@@ -68,7 +177,19 @@
                 <br>ボールに見立てた</span>
               <span class="main__contentHeadlarge">チキンライス弁当</span>
             </h2>
-            <a class="main__button" href="#">ご注文は<br>こちらから</a>
+            <!-- add to cart -->
+            <div class="main__add item_detail_info">
+              <input type="hidden" value="xxxx" id="item_detail_item_id">
+               <p class="item_detail_number">
+                 数量: <input class="item-num" size="3" type="type" min="1">
+                 <button data-input-stepper-decrease>-</button>
+                 <button data-input-stepper-increase>+</button>
+              </p>
+              <div class="info_group" id="item_detail_cart">
+                <a class="main__button add" href="javascript:void(0)" >ご注文は<br>こちらから</a>
+              </div>
+             </div>
+            <!-- //add to cart -->
           </div>
         </div>
       </main>
@@ -94,5 +215,10 @@
         </div>
       </div>
     </div>
+    <!-- deli-cart -->
+    <div id="open">
+      <img src="/img/cart.png" alt="カートを見る">
+    </div>
+    <!-- /deli-cart -->
   </body>
 </html>

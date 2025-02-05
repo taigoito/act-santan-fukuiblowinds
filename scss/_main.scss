@@ -3,13 +3,14 @@
  */
 
 .main {
-  padding-bottom: 6rem;
+  padding-bottom: 3rem;
 
   &__content {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
+    margin: 3rem 0;
 
     &:nth-child(odd) {
       @media (min-width: $breakpoint + 0.1) {
@@ -40,7 +41,7 @@
 
   &__contentHeadline {
     width: 15rem;
-    margin: 1.5rem auto;
+    margin: 0 auto -1.5rem;
     padding: 1.5rem 0.375rem;
     background: url("./assets/cloud00.png") no-repeat 50% 50% / contain scroll;
     font-size: 1.75rem;
@@ -55,10 +56,18 @@
     font-size: 0.5em;
   }
 
+  &__add {
+    text-align: center;
+
+    .item-num {
+      text-align: center;
+    }
+  }
+
   &__button {
     display: block;
     width: 10.5rem;
-    margin: 1.5rem auto;
+    margin: 0 auto;
     padding: 0.375rem;
     border-radius: 6px;
     background: url("./assets/buttonBg.jpg") no-repeat 50% 50% / cover scroll;
