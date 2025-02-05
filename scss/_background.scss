@@ -11,6 +11,7 @@ $accentColor: #fbf0d7;
   z-index: 1;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 
   &__head {
     position: absolute;
@@ -48,6 +49,34 @@ $accentColor: #fbf0d7;
   &__image--2,
   &__image--3,
   &__image--4 {
-    display: none;
+    position: absolute;
+    width: max(6rem, 120%);
+    height: max(9.6rem, 192%);
+  }
+
+  &__image--1,
+  &__image--2 {
+    right: calc(max(3rem, 60%) * -1);
+  }
+
+  &__image--3,
+  &__image--4 {
+    left: calc(max(3rem, 60%) * -1);
+  }
+
+  &__image--1 {
+    top: 5%;
+  }
+
+  &__image--2 {
+    top: 35%;
+  }
+
+  &__image--3 {
+    top: 20%;
+  }
+
+  &__image--4 {
+    top: 50%;
   }
 }
