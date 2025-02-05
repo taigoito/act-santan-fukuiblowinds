@@ -1,20 +1,16 @@
 // Variables
 
 $bodyBg:               #ffffff;
-$bodyColor:            #262626; // 15%
-$primary:              #3399cc; // hsl(200, 60%, 50%)
-$primaryLight:         #85c2e0; // hsl(200, 60%, 70%)
-$linkColor:            $primary;
-$linkHoverColor:       $primaryLight;
+$bodyColor:            #302f75; // 15%
+$linkColor:            $bodyBg;
+$linkHoverColor:       $bodyBg;
 
-$breakpointSm:         600px;
-$breakpointMd:         900px;
-$breakpointLg:         1200px;
+$breakpoint:           750px;
 
 $fontSizeBase:         16px;
 $rootFontSize:         min(3.84vw, $fontSizeBase);
 
-$fontFamilyBase:       "游ゴシック", "Yu Gothic", sans-serif;
-$fontWeightBase:       500; // Specific setting for "Yu Gothic"
+$fontFamilyBase:       "Noto Sans JP", sans-serif;
+$fontWeightBase:       600;
 $lineHeightBase:       28.8 / ($fontSizeBase / ($fontSizeBase * 0 + 1)); // 単位除去
 $letterSpacingBase:    0;

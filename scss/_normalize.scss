@@ -13,6 +13,8 @@ html {
 }
  
 body {
+  position: relative;
+  min-height: 100vh;
   margin: 0; // Remove the margin in all browsers
   background-color: $bodyBg;
   color: $bodyColor;
@@ -31,7 +33,7 @@ a {
   
   &:hover, &:focus {
     color: $linkHoverColor;
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 

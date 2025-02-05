@@ -1,0 +1,53 @@
+/**
+ * Background
+ */
+
+$accentColor: #fbf0d7;
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+
+  &__head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 1.5rem;
+    background-color: $bodyColor;
+  }
+
+  &__main {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__left, &__right {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 12%;
+    height: 100%;
+    background: repeating-linear-gradient(45deg, $bodyBg, $bodyBg 2px, $accentColor 2px, $accentColor 24px);
+  }
+
+  &__left {
+    left: 0;
+  }
+
+  &__right {
+    right: 0;
+  }
+
+  &__image--1,
+  &__image--2,
+  &__image--3,
+  &__image--4 {
+    display: none;
+  }
+}

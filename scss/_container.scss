@@ -1,0 +1,11 @@
+/**
+ * Container
+ */
+
+.container {
+  position: relative;
+  z-index: 10;
+  width: min(100%, 56.25rem); // 900px 左右18pxずつpaddingで、内寸864x
+  margin: 0 auto;
+  padding: 0 clamp(0.75rem, 2%, 1.125rem);
+}
