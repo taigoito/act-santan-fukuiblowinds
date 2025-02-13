@@ -171,6 +171,9 @@ button, input, select, textarea {
 .main__contentHeadSmall {
   font-size: 0.5em;
 }
+.main__price {
+  text-align: center;
+}
 .main__add {
   text-align: center;
 }
